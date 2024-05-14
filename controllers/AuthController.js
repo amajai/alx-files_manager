@@ -4,7 +4,7 @@ import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
 class AuthController {
-  static async login(req, res) {
+  static async getConnect(req, res) {
     const credentials = req.header('Authorization').split(' ')[1];
     if (!credentials) {
       return res.status(401).json({ error: 'Unauthorized' });
@@ -22,7 +22,7 @@ class AuthController {
     return res.status(200).json({ token });
   }
 
-  static async logout(req, res) {
+  static async getDisconnect(req, res) {
     const token = req.header('X-Token');
     if (!token) {
       return res.status(401).json({ error: 'Unauthorized' });
